@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
+import { UserRouter } from "./router/user.routes";
 
 
 class Server {
@@ -13,18 +14,18 @@ class Server {
     this.app.use(morgan("dev"));
     this.app.use(cors());
 
-    this.app.get("/api", (req, res) => {
-      res.status(200).json({message: "respuesta de ruta /api "})
-    })
-
+    this.app.use("/api", this.routers());
     this.listen();
   }
 
+  routers(): Array<express.Router> {
+    return [new UserRouter().router];
+  }
 
 
   public listen() {
     this.app.listen(this.port, () => {
-      console.log(`Server is running on port ${this.port}`);
+      console.log("Server listening on port =>" + this.port);
     });
   }
 }
