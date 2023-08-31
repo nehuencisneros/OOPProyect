@@ -1,0 +1,11 @@
+{
+  "name": "oopproyect",
+  "version": "1.0.0",
+  "description": "practica POO con typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nehuen Cisneros",
+  "license": "ISC"
+}
