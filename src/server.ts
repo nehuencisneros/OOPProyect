@@ -2,15 +2,20 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import { UserRouter } from "./router/user.routes";
+import { ConfigServer } from "./config/config";
+import { DataSource } from "typeorm";
 
-
-class Server {
+class Server extends ConfigServer{
   public app: express.Application = express();
-  private port: number = 3000;
+  private port: number = this.getNumberEnv("PORT") || 3000;
 
   constructor() {
+    super();
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
+
+    this.dbconnect();
+    
     this.app.use(morgan("dev"));
     this.app.use(cors());
 
@@ -22,6 +27,9 @@ class Server {
     return [new UserRouter().router];
   }
 
+  async dbconnect(): Promise<DataSource> {
+    return await new DataSource(this.typeORMConfig).initialize();
+  }
 
   public listen() {
     this.app.listen(this.port, () => {
