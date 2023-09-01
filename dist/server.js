@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
-const user_routes_1 = require("./router/user.routes");
+const user_routes_1 = require("./user/user.routes");
 const config_1 = require("./config/config");
 const typeorm_1 = require("typeorm");
 class Server extends config_1.ConfigServer {
@@ -41,7 +41,7 @@ class Server extends config_1.ConfigServer {
     }
     listen() {
         this.app.listen(this.port, () => {
-            console.log("Server listening on port =>" + this.port);
+            console.log("Server listening on port => " + this.port);
         });
     }
 }

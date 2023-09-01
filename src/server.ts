@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
-import { UserRouter } from "./router/user.routes";
+import { UserRouter } from "./user/user.routes";
 import { ConfigServer } from "./config/config";
 import { DataSource } from "typeorm";
 
@@ -33,7 +33,7 @@ class Server extends ConfigServer{
 
   public listen() {
     this.app.listen(this.port, () => {
-      console.log("Server listening on port =>" + this.port);
+      console.log("Server listening on port => " + this.port);
     });
   }
 }
