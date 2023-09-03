@@ -22,7 +22,7 @@ class Server extends config_1.ConfigServer {
     constructor() {
         super();
         this.app = (0, express_1.default)();
-        this.port = this.getNumberEnv("PORT") || 3000;
+        this.port = this.getNumberEnv("PORT");
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: true }));
         this.dbconnect();

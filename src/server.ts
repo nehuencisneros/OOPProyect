@@ -7,7 +7,7 @@ import { DataSource } from "typeorm";
 
 class Server extends ConfigServer{
   public app: express.Application = express();
-  private port: number = this.getNumberEnv("PORT") || 3000;
+  private port: number = this.getNumberEnv("PORT");
 
   constructor() {
     super();

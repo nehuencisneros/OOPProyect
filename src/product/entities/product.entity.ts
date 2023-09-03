@@ -1,6 +1,6 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
-import { BaseEntity } from "../../config/base.entity"
-import { CategoryEntity } from "../../category/entities/category. entity";
+import { Column, Entity, ManyToOne, JoinColumn, OneToMany } from "typeorm";
+import { BaseEntity } from "../../config/base.entity";
+import { CategoryEntity } from "../../category/entities/category.entity";
 import { PurchaseProductEntity } from "../../purchase/entities/purchases-products.entity";
 
 @Entity({ name: "product" })
@@ -18,6 +18,9 @@ export class ProductEntity extends BaseEntity {
   @JoinColumn({ name: "category_id" })
   category!: CategoryEntity;
 
-  @OneToMany(() => PurchaseProductEntity,(purchaseProduct) => purchaseProduct.product)
+  @OneToMany(
+    () => PurchaseProductEntity,
+    (purchaseProduct) => purchaseProduct.product
+  )
   purchaseProduct!: PurchaseProductEntity[];
 }
