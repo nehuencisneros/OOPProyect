@@ -5,22 +5,25 @@ import { CustomerEntity } from "../../customer/entities/customer.entity";
 @Entity({name: "users"})
 export class UserEntity extends BaseEntity {
   @Column()
-  name!:string;
+  name!: string;
 
   @Column()
-  lastName!:string;
-  
+  lastname!: string;
+
   @Column()
-  userName!:string;
-  
+  username!: string;
+
   @Column()
-  password!:string;
-  
+  email!: string;
+
   @Column()
-  city!:string;
-  
+  password!: string;
+
   @Column()
-  province!:string;
+  city!: string;
+
+  @Column()
+  province!: string;
 
   @OneToOne(() => CustomerEntity, (customer) => customer.user)
   customer!: CustomerEntity;
