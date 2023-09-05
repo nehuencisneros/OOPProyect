@@ -24,7 +24,7 @@ export class UserService extends BaseService<UserEntity> {
     return (await this.execRepository).delete({ id })
   }
 
-  async UpdateUser(id: string, infoUpdate: UserDTO): Promise<UpdateResult> {
+  async updateUser(id: string, infoUpdate: UserDTO): Promise<UpdateResult> {
     return (await this.execRepository).update(id, infoUpdate)
   }
 }
