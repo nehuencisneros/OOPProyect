@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToOne } from "typeorm";
+import { Column, Entity, OneToOne } from "typeorm";
 import { BaseEntity } from "../../config/base.entity";
 import { CustomerEntity } from "../../customer/entities/customer.entity";
 
@@ -25,4 +25,7 @@ export class UserEntity extends BaseEntity {
 
   @Column()
   province!: string;
+
+  @OneToOne(() => CustomerEntity, (customer) => customer.user)
+  customer!: CustomerEntity;
 }
