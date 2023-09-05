@@ -1,5 +1,5 @@
 import * as dotenv from "dotenv";
-import { DataSourceOptions } from "typeorm";
+import { DataSource, DataSourceOptions } from "typeorm";
 import { SnakeNamingStrategy } from "typeorm-naming-strategies";
 
 export abstract class ConfigServer {
@@ -46,5 +46,9 @@ export abstract class ConfigServer {
       logging: false,
       namingStrategy: new SnakeNamingStrategy(),
     };
+  }
+  
+  async dbConnect(): Promise<DataSource> {
+    return await new DataSource(this.typeORMConfig).initialize();
   }
 }
