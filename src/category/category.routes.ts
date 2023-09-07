@@ -6,8 +6,25 @@ export class CategoryRouter extends BaseRouter<CategoryController> {
     super(CategoryController);
   }
 
-  routes():void {
+  routes(): void {
+    this.router.get("/categories", (req, res) =>
+      this.controller.getAllCategories(req, res)
+    );
 
+    this.router.get("/category/:id", (req, res) =>
+      this.controller.getCategoryById(req, res)
+    );
 
+    this.router.post("/createCategory", (req, res) =>
+      this.controller.getAllCategories(req, res)
+    );
+
+    this.router.put("/updateCategory/:id", (req, res) =>
+      this.controller.updateCategory(req, res)
+    );
+
+    this.router.delete("/deleteCategory/:id", (req, res) =>
+      this.controller.deleteCategory(req, res)
+    );
   }
 }

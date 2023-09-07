@@ -55,9 +55,9 @@ export class UserController {
     try {
       const data: UpdateResult = await this.userService.updateUser(id, body);
 
-        if (!data.affected) {
-          return this.httpResponse.NotFound(res, "Hay un error en updateUser");
-        }
+      if (!data.affected) {
+        return this.httpResponse.NotFound(res, "Hay un error en updateUser");
+      }
 
       return this.httpResponse.Ok(res, data);
     } catch (error) {
