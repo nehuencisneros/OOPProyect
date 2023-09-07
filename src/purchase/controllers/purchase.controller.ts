@@ -49,7 +49,7 @@ export class PurchaseController {
     }
   }
 
-  async updatPurchase(req: Request, res: Response){
+  async updatePurchase(req: Request, res: Response){
     const body = req.body;
     const { id } = req.params
     try {
