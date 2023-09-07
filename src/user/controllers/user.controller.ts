@@ -42,6 +42,7 @@ export class UserController {
     const body = req.body;
     try {
       const data = await this.userService.createUser(body);
+
       return this.httpResponse.Ok(res, data);
     } catch (error) {
       return this.httpResponse.Error(res, error);
@@ -55,7 +56,7 @@ export class UserController {
       const data: UpdateResult = await this.userService.updateUser(id, body);
 
         if (!data.affected) {
-          return this.httpResponse.NotFound(res, "Hay un error en update");
+          return this.httpResponse.NotFound(res, "Hay un error en updateUser");
         }
 
       return this.httpResponse.Ok(res, data);
@@ -70,7 +71,7 @@ export class UserController {
       const data: DeleteResult = await this.userService.deleteUser(id);
 
         if (!data.affected) {
-          return this.httpResponse.NotFound(res, "Hay un error en delete");
+          return this.httpResponse.NotFound(res, "Hay un error en deleteUser");
         }
 
       return this.httpResponse.Ok(res, data);

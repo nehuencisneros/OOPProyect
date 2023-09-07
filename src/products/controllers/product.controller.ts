@@ -55,7 +55,7 @@ export class ProductController {
       const data: UpdateResult = await this.productService.updateProduct(id, body);
 
         if (!data.affected) {
-          return this.httpResponse.NotFound(res, "Hay un error en update");
+          return this.httpResponse.NotFound(res, "Hay un error en updateProduct");
         }
 
       return this.httpResponse.Ok(res, data);
@@ -64,13 +64,13 @@ export class ProductController {
     }
   }
 
-  async deleteUser(req: Request, res: Response) {
+  async deleteProduct(req: Request, res: Response) {
     const { id } = req.params;
     try {
       const data: DeleteResult = await this.productService.deleteProduct(id);
       
         if (!data.affected) {
-          return this.httpResponse.NotFound(res, "Hay un error en delete");
+          return this.httpResponse.NotFound(res, "Hay un error en deleteProduct");
         }
 
       return this.httpResponse.Ok(res, data);
