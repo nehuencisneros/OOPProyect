@@ -13,9 +13,10 @@ export class UserController {
     try {
       const data = await this.userService.findAllUser();
 
-      if(data.length === 0) {
-        return this.httpResponse.NotFound(res, "no hay usuarios")
-      }
+        if(data.length === 0) {
+          return this.httpResponse.NotFound(res, "no hay usuarios")
+        }
+
       return this.httpResponse.Ok(res, data);
     } catch (error) {
       return this.httpResponse.Error(res, error);
@@ -27,9 +28,9 @@ export class UserController {
     try {
       const data = await this.userService.findUserById(id);
       
-      if(!data){
-        return this.httpResponse.NotFound(res, "usuario no encontrado");
-      }
+        if(!data){
+          return this.httpResponse.NotFound(res, "usuario no encontrado");
+        }
 
       return this.httpResponse.Ok(res, data);
     } catch (error) {
@@ -53,9 +54,9 @@ export class UserController {
     try {
       const data: UpdateResult = await this.userService.updateUser(id, body);
 
-      if (!data.affected) {
-        return this.httpResponse.NotFound(res, "Hay un error en update");
-      }
+        if (!data.affected) {
+          return this.httpResponse.NotFound(res, "Hay un error en update");
+        }
 
       return this.httpResponse.Ok(res, data);
     } catch (error) {
@@ -67,9 +68,11 @@ export class UserController {
     const { id } = req.params;
     try {
       const data: DeleteResult = await this.userService.deleteUser(id);
-      if (!data.affected) {
-        return this.httpResponse.NotFound(res, "Hay un error en delete");
-      }
+
+        if (!data.affected) {
+          return this.httpResponse.NotFound(res, "Hay un error en delete");
+        }
+
       return this.httpResponse.Ok(res, data);
     } catch (error) {
       return this.httpResponse.Error(res, error);

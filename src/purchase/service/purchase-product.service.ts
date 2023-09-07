@@ -3,8 +3,6 @@ import { BaseService } from "../../config/base.service";
 import { PurchaseProductDTO } from "../dto/purchase-product.dto";
 import { PurchaseProductEntity } from "../entities/purchase-product.entity";
 
-
-
 export class PurchaseProductService extends BaseService<PurchaseProductEntity> {
   constructor() {
     super(PurchaseProductEntity);
