@@ -21,8 +21,8 @@ export class ProductMiddleware {
 
 
     validate(valid).then((error) =>
-      error.length === 0 ? this.httpResponse.Error(res, error)
-        :
+      error.length > 0 ? this.httpResponse.Error(res, error)
+        : 
       next()
     )
   }
