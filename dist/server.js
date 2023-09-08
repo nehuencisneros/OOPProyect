@@ -8,6 +8,11 @@ const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 const user_routes_1 = require("./user/user.routes");
 const config_1 = require("./config/config");
+const purchase_routes_1 = require("./purchase/purchase.routes");
+const purchaseProduct_routes_1 = require("./purchase/purchaseProduct.routes");
+const customer_routes_1 = require("./customer/customer.routes");
+const category_routes_1 = require("./category/category.routes");
+const product_routes_1 = require("./products/product.routes");
 class Server extends config_1.ConfigServer {
     constructor() {
         super();
@@ -22,7 +27,14 @@ class Server extends config_1.ConfigServer {
         this.listen();
     }
     routers() {
-        return [new user_routes_1.UserRouter().router];
+        return [
+            new user_routes_1.UserRouter().router,
+            new purchase_routes_1.PurchaseRouter().router,
+            new purchaseProduct_routes_1.PurchaseProductRouter().router,
+            new customer_routes_1.CustomerRouter().router,
+            new category_routes_1.CategoryRouter().router,
+            new product_routes_1.ProductRouter().router,
+        ];
     }
     listen() {
         this.app.listen(this.port, () => {

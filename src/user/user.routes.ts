@@ -15,6 +15,10 @@ export class UserRouter extends BaseRouter<UserController> {
       this.controller.getUserById(req, res)
     );
 
+    this.router.get("/userRelation/:id", (req, res) =>
+    this.controller.getUserWithRelationById(req, res)
+  );
+
     this.router.post("/createUser", (req, res) =>
       this.controller.createUser(req, res)
     );

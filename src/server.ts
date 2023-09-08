@@ -3,6 +3,11 @@ import morgan from "morgan";
 import cors from "cors";
 import { UserRouter } from "./user/user.routes";
 import { ConfigServer } from "./config/config";
+import { PurchaseRouter } from "./purchase/purchase.routes";
+import { PurchaseProductRouter } from "./purchase/purchaseProduct.routes";
+import { CustomerRouter } from "./customer/customer.routes";
+import { CategoryRouter } from "./category/category.routes";
+import { ProductRouter } from "./products/product.routes";
 
 
 class Server extends ConfigServer{
@@ -24,7 +29,14 @@ class Server extends ConfigServer{
   }
 
   routers(): Array<express.Router> {
-    return [new UserRouter().router];
+    return [
+      new UserRouter().router,
+      new PurchaseRouter().router,
+      new PurchaseProductRouter().router,
+      new CustomerRouter().router,
+      new CategoryRouter().router,
+      new ProductRouter().router,
+    ];
   }
 
   public listen() {

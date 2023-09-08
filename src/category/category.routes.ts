@@ -16,7 +16,7 @@ export class CategoryRouter extends BaseRouter<CategoryController> {
     );
 
     this.router.post("/createCategory", (req, res) =>
-      this.controller.getAllCategories(req, res)
+      this.controller.createCategory(req, res)
     );
 
     this.router.put("/updateCategory/:id", (req, res) =>
