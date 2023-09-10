@@ -8,14 +8,14 @@ export class UserMiddleware {
     private readonly httpResponse: HttpResponse = new HttpResponse(),
   ){}
   userValidator(req: Request, res: Response, next: NextFunction){
-    const { name, lastName, userName, email, password, city, province, role } = 
+    const { name, lastname, username, email, password, city, province, role } = 
     req.body;
   
     const valid = new UserDTO();
 
     valid.name = name;
-    valid.lastname = lastName;
-    valid.username = userName;
+    valid.lastname = lastname;
+    valid.username = username;
     valid.email = email;
     valid.password = password;
     valid.city = city;
